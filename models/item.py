@@ -31,8 +31,8 @@ class Item(Model):
             "query": self.query
         }
 
-    def save_to_mongo(self):
-        Database.insert(self.collection, self.json())
+    # def save_to_mongo(self):
+    #     Database.insert(self.collection, self.json())
 
     def load_price(self):
         content = requests.get(self.url).content
@@ -47,12 +47,12 @@ class Item(Model):
         self.price = int(priceStr_without_comma)
         return self.price
 
-    @classmethod
-    def all(cls):
-        items_from_db = Database.find(cls.collection, query={})
-        return [cls(**item) for item in items_from_db]
+    # @classmethod
+    # def all(cls):
+    #     items_from_db = Database.find(cls.collection, query={})
+    #     return [cls(**item) for item in items_from_db]
 
-    @classmethod
-    def get_by_id(cls, _id):
-        item_json = Database.find_one(cls.collection, query={"_id": _id})
-        return cls(**item_json)
+    # @classmethod
+    # def get_by_id(cls, _id):
+    #     item_json = Database.find_one(cls.collection, query={"_id": _id})
+    #     return cls(**item_json)
