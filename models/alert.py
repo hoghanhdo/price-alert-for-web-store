@@ -1,7 +1,6 @@
 import uuid
-from typing import Dict, List
+from typing import Dict
 
-from common.database import Database
 from models.item import Item
 from models.model import Model
 
@@ -22,8 +21,8 @@ class Alert(Model):
             "item_id": self.item_id
         }
 
-    def save_to_mongo(self):
-        Database.insert(self.collection, self.json())
+    # def save_to_mongo(self):
+    #     Database.insert(self.collection, self.json())
 
     def load_item_price(self):
         self.item.load_price()
@@ -35,11 +34,11 @@ class Alert(Model):
         else:
             print(f"There is no change in the price of Item {self.item}\nCurrent price is ¥{self.item.price}")
 
-    @classmethod
-    def get_by_id(cls, _id):
-        return cls(**Database.find_one(cls.collection, query={"_id": _id}))
+    # @classmethod
+    # def get_by_id(cls, _id):
+    #     return cls(**Database.find_one(cls.collection, query={"_id": _id}))
 
-    @classmethod
-    def all(cls):
-        alerts_from_db = Database.find(cls.collection, {})
-        return [cls(**alert) for alert in alerts_from_db]
+    # @classmethod
+    # def all(cls):
+    #     alerts_from_db = Database.find(cls.collection, {})
+    #     return [cls(**alert) for alert in alerts_from_db]
