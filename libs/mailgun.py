@@ -32,9 +32,3 @@ class Mailgun:
         if response.status_code != 200:
             raise MailgunException("An error occurred while sending e-mail.")
         return response
-
-
-print(Mailgun.send_mail("hoghanhdo@gmail.com",
-                  "Testing Mailgun",
-                  "Just wanted to test",
-                  "<a href = 'google.com'>Check out Google</a>"))
