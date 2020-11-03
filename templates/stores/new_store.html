@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <header><h1>Create Stores</h1></header>
+    <section class="creat-store-form">
+        <form method="post">
+             <div class="form-group">
+                <label for="store_name">Store Name</label>
+                <input type="text" class="form-control" id="store_name" name="store_name" placeholder="Cath Kidston" />
+            </div>
+            <div class="form-group">
+                <label for="url_prefix">URL Prefix</label>
+                <input type="text" class="form-control" id="url_prefix" name="url_prefix" placeholder="https://www.cathkidston.com/"
+                aria-describedby="urlPrefixHelp"/>
+                <small class="form-text text-muted" id="urlPrefixHelp">
+                    What URL will items start with?
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="tag_name">HTML Tag Name</label>
+                <input type="text" class="form-control" id="tag_name" name="tag_name" placeholder="span"
+                       aria-describedby="htmlTagHelp"/>
+                <small class="form-text text-muted" id="htmlTagHelp">
+                    What HTML tag contains the price information for items in this store? It can be searched by inspecting page.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="query">HTML Query</label>
+                <input type="text" class="form-control" id="query" name="query" placeholder='{"class": "price-sale"}'
+                       aria-describedby="htmlQueryHelp"/>
+                <small class="form-text text-muted" id="htmlQueryHelp">
+                    What attribute that contains the price?
+                </small>
+            </div>
+            <button type="submit" class="btn btn-primary">Create store</button>
+        </form>
+    </section>
+{% endblock %}

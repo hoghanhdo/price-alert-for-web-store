@@ -1,11 +1,14 @@
-from models.alert import Alert
+import requests
 
-alerts = Alert.all()
 
-for alert in alerts:
-    alert.load_item_price()
-    alert.notify_if_price_reached()
-    print()
+def send_simple_message():
+    return requests.post(
+        "https://api.mailgun.net/v3/sandboxea7f94db2e4c4b58ba2c8920609d4c4b.mailgun.org/messages",
+        auth=("api", "4d42d574da4a77a97402111a032e6d9f-ea44b6dc-fdc4f782"),
+        data={"from": "Pricing Alert Service <do-not-reply@sandboxea7f94db2e4c4b58ba2c8920609d4c4b.mailgun.org>",
+              "to": ["hoghanhdo@gmail.com", "hoghanhdo@outlook.com"],
+              "subject": "Pricing Alert",
+              "text": "Welcome to Mailgun"})
 
-if not alerts:
-    print("No alerts have been created. Add an item and an alert to begin!")
+
+print(send_simple_message())

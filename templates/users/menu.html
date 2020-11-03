@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Welcome! {{ session["email"] }}</h1>
+        <p class="lead">You may want to view stores or check your alerts.</p>
+      </div>
+    <div class="list-group">
+      <a href="{{ url_for('stores.index') }}" class="list-group-item list-group-item-action">View store list</a>
+      <a href="{{ url_for('alerts.index') }}" class="list-group-item list-group-item-action">Check alerts</a>
+    </div>
+    </div>
+    <a class="btn btn-secondary" href="{{ url_for('users.logout_user') }}">Log-out</a>
+
+
+{% endblock %}
